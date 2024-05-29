@@ -44,7 +44,7 @@ def main():
     st.title("Hotel Pricing Data Explorer")
 
     # Fetch unique values for regions, countries, and months
-    conn = sqlite3.connect("/fake_hotel_pricing_with1000entries.db")
+    conn = sqlite3.connect("fake_hotel_pricing_with1000entries.db")
     print("Connection established")  # Add print statement
     regions = pd.read_sql("SELECT DISTINCT region FROM hotel_pricing", conn)["region"].tolist()
     countries = pd.read_sql("SELECT DISTINCT country FROM hotel_pricing", conn)["country"].tolist()
@@ -58,7 +58,7 @@ def main():
 
     # Dynamically update country options based on selected region
     if selected_region != "All":
-        conn = sqlite3.connect("/fake_hotel_pricing_with1000entries.db")
+        conn = sqlite3.connect("fake_hotel_pricing_with1000entries.db")
         print("Connection established")  # Add print statement
         countries = pd.read_sql(f"SELECT DISTINCT country FROM hotel_pricing WHERE region = '{selected_region}'", conn)["country"].tolist()
         conn.close()
