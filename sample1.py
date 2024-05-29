@@ -15,11 +15,9 @@ with col1:
 with col2:
     st.header('Hotel Price Analyser', divider='rainbow')
     
-
-# Function to fetch data from the SQLite database based on user input
 def fetch_data(region=None, country=None, month=None):
     print("Inside fetch_data function")  # Add print statement
-    conn = sqlite3.connect("/fake_hotel_pricing_with1000entries.db")
+    conn = sqlite3.connect("fake_hotel_pricing_with1000entries.db")
     print("Connection established")  # Add print statement
 
     query = "SELECT * FROM hotel_pricing"
@@ -38,6 +36,7 @@ def fetch_data(region=None, country=None, month=None):
     df = pd.read_sql(query, conn)
     conn.close()
     return df
+
 
 # Streamlit app
 def main():
